@@ -77,52 +77,62 @@ HEADER
 position:sticky;
 top:0;
 z-index:100;
-border-bottom:1px solid rgba(255,255,255,.06);
-background:rgba(0,0,0,.72);
+background:rgba(0,0,0,.78);
 backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(255,255,255,.05);
+width:100%;
+overflow:hidden;
 }
 
 .header-inner{
 max-width:1200px;
 margin:auto;
-padding:14px;
+padding:12px 14px;
 display:flex;
 align-items:center;
 justify-content:space-between;
 gap:12px;
-overflow:hidden;
+min-width:0;
 }
 
 .brand{
 display:flex;
 align-items:center;
 gap:10px;
-min-width:0;
 flex:1;
+min-width:0;
 overflow:hidden;
 }
 
 .logo{
 width:34px;
 height:34px;
-object-fit:contain;
 flex-shrink:0;
-filter:drop-shadow(0 0 18px rgba(168,85,247,.5));
+object-fit:contain;
+filter:drop-shadow(0 0 16px rgba(168,85,247,.45));
 }
 
 .text-logo{
-height:18px;
+height:16px;
 width:auto;
-max-width:120px;
+max-width:110px;
 object-fit:contain;
+flex-shrink:1;
+min-width:0;
 }
 
 .header .download-btn{
 width:auto;
-min-width:140px;
-padding:14px 18px;
-font-size:14px;
+min-width:unset;
+height:46px;
+padding:0 18px;
+border-radius:14px;
+font-size:13px;
+font-weight:700;
+white-space:nowrap;
 flex-shrink:0;
+background:linear-gradient(to right,#8b5cf6,#d946ef);
+box-shadow:0 0 24px rgba(168,85,247,.24);
 }
 
 /* =========================
@@ -185,11 +195,13 @@ display:flex;
 flex-direction:column;
 gap:34px;
 align-items:center;
+min-width:0;
 }
 
 .hero-left{
 width:100%;
 text-align:center;
+min-width:0;
 }
 
 .hero-badge{
@@ -259,6 +271,7 @@ flex-direction:column;
 gap:12px;
 margin-top:28px;
 width:100%;
+align-items:center;
 }
 
 /* =========================
@@ -269,11 +282,13 @@ PHONE
 width:100%;
 display:flex;
 justify-content:center;
+align-items:center;
+padding-inline:14px;
+min-width:0;
 }
 
 .phone{
-width:100%;
-max-width:300px;
+width:min(100%, 300px);
 aspect-ratio:9/18.5;
 border-radius:30px;
 overflow:hidden;
@@ -281,6 +296,14 @@ position:relative;
 background:linear-gradient(to bottom,#14051f,#05010a);
 border:1px solid rgba(168,85,247,.16);
 box-shadow:0 0 30px rgba(168,85,247,.12);
+
+margin-inline:auto;
+
+transform:translateX(0) !important;
+left:auto !important;
+right:auto !important;
+
+min-width:0;
 }
 
 .phone::before{
@@ -475,10 +498,15 @@ color:#8b8b96;
 TABLET
 ========================= */
 
-@media(min-width:700px){
+@media(min-width:768px){
 
 .header-inner{
-padding:16px 18px;
+padding:16px 20px;
+}
+
+.logo{
+width:38px;
+height:38px;
 }
 
 .text-logo{
@@ -486,61 +514,34 @@ height:22px;
 max-width:none;
 }
 
-.hero-actions{
-flex-direction:row;
-flex-wrap:wrap;
-justify-content:center;
-}
-
-.hero-actions a{
-width:auto;
-min-width:220px;
+.header .download-btn{
+height:52px;
+padding:0 24px;
+font-size:14px;
+border-radius:16px;
 }
 
 .phone{
 max-width:360px;
 }
 
-.features-grid{
-grid-template-columns:repeat(2,1fr);
-gap:18px;
-}
-
 }
 
 /* =========================
-DESKTOP
+REAL DESKTOP ONLY
 ========================= */
 
-@media(min-width:1000px){
-
-.header-inner{
-padding:18px 24px;
-}
-
-.logo{
-width:42px;
-height:42px;
-}
-
-.text-logo{
-height:30px;
-}
-
-.header .download-btn{
-padding:16px 24px;
-font-size:15px;
-}
+@media(min-width:1200px){
 
 .hero-section{
-padding:80px 24px 120px;
+padding:90px 24px 120px;
 }
 
 .hero-container{
 flex-direction:row;
 align-items:center;
 justify-content:space-between;
-gap:80px;
+gap:100px;
 }
 
 .hero-left{
@@ -565,12 +566,19 @@ margin-top:24px;
 }
 
 .hero-actions{
+flex-direction:row;
+flex-wrap:wrap;
 justify-content:flex-start;
 margin-top:36px;
 }
 
+.hero-actions a{
+width:auto;
+min-width:220px;
+}
+
 .phone{
-max-width:410px;
+max-width:420px;
 border-radius:52px;
 box-shadow:0 0 100px rgba(168,85,247,.18);
 }
